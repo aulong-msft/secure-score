@@ -1,37 +1,49 @@
 # Secure Score Functions
-
-This code is a set of functions that interact with Azure Defender for Cloud's Secure Score API. It allows you to retrieve secure score data from Azure, process and manipulate JSON files, and perform various operations on the secure score data.
+Secure Score Functions is a C# console application that retrieves and processes secure score data from Azure. It uses the Azure SDK and Azure Identity library to authenticate with Azure, fetch secure score data, calculate score percentages, and create JSON files containing the score information.
 
 ## Prerequisites
 
-Before running the code, make sure you have completed the following steps:
+Before running the code, ensure that the following prerequisites are met:
 
-1. Install the Azure SDK for .NET.
-2. Fill out the `Subscription_ID` and perform an `az login` in the `appsettings.json` file.
-3. Ensure that you have the necessary permissions and access to the Azure subscription.
+- Azure SDK and Azure Identity libraries are installed.
+- An Azure subscription and valid Azure credentials are available.
+- The `appsettings.json` file is properly configured with the required settings such as `Subscription_ID`, `SecureScoreName`, `Output_FilePath`, and `Az_FilePath`.
+
+This project uses the following capabilities
+.NET Core SDK (version X.X or higher)
+Azure subscription
+Azure CLI (for Az login
 
 ## Usage
+To build the application, use the following command:
 
-1. Clone the repository or download the code files.
+```shell
+dotnet build
+```
 
-2. Open the code in your preferred development environment.
+to run the application, use the following command:
 
-3. Modify the `appsettings.json` file with your Azure subscription ID and other required information.
 
-4. Run the code.
+```shell
+dotnet run
+```
 
-5. The application will prompt you to choose between processing a new secure score or building one over time.
+## Running the Code
 
-   - If you choose "new", the code will retrieve the secure score data from Azure, create a new secure score JSON file, and save it to the specified output path.
+To run the code:
 
-   - If you choose "build", the code will prompt you to enter the path to an existing JSON file. It will then process the JSON file, extract the secure score data, and perform operations on it.
+1. Set up the `appsettings.json` file with the appropriate configuration settings.
+2. Build and execute the code using a C# compiler or an integrated development environment (IDE) with C# support.
+3. The code will perform the necessary Azure login, retrieve and process secure score data, and generate the secure score JSON file.
+4. If the specified output file path already exists, the code will process the existing JSON file, calculate the delta score, and write the updated JSON documents to the file.
+5. Review the console output for status messages, including the output file path and any errors or success messages.
 
-6. The output will be displayed in the console, including the secure score JSON file path, the generated secure score JSON, and any relevant information or changes in the secure score.
+## Limitations
 
-## File Structure
-
-- `Program.cs`: Contains the main entry point and functions for retrieving, processing, and manipulating secure score data.
-- `appsettings.json`: Configuration file with Azure subscription ID and other required settings.
+- The code assumes that the Azure CLI (`az`) executable is installed and properly configured.
+- The code requires valid Azure credentials with appropriate permissions to access secure score data.
+- The code is specific to the Azure SDK and Azure services and may not be directly applicable to other cloud platforms or APIs.
+- The code does not handle all possible error scenarios and may require additional error handling and validation for production.
 
 ## License
 
@@ -45,4 +57,3 @@ Contributions are welcome! If you find any issues or have suggestions for improv
 
 - [Azure SDK for .NET](https://azure.github.io/azure-sdk/)
 - [Azure Security Center Documentation](https://docs.microsoft.com/azure/security-center/)
-
